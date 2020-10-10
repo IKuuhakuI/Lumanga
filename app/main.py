@@ -36,6 +36,7 @@ def entrar():
 
 @app.route("/user")
 def user ():
+	flash ("Exame 'X' pendente!")
 	if "email" in session:
 		logado = True
 		email = session["email"]
