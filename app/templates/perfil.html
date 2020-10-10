@@ -2,16 +2,119 @@
 {% block title %}Perfil{% endblock %}
 
 {% block menu %}
-            <li><a href="/">Início</a></li>
-            <li><a href="/consultas">Consultas</a></li>
-            <li><a href="/eventos">Eventos</a></li>
-            <li><a href="/videos">Videos</a></li>
-            <li class="active"><a href="#">Perfil</a></li>
-
+	<li><a href="/">Início</a></li>
+	<li><a href="/consultas">Consultas</a></li>
+	<li><a href="/eventos">Eventos</a></li>
+	<li><a href="/videos">Videos</a></li>
+	<li class="active"><a href="/user">Perfil</a></li>
 {% endblock %}
 
-{% block content %}
-	<p> Bem Vindo, {{user}} </p>
+{% block conteudo %}
+	<div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="signup-form" id="caixaLogin">     
+                    <form action="#" method="post">
+                        <h2 id="title">Perfil</h2>
+                        <hr>
 
-	<h1> O PERFIL </h1>
-{% endblock%}
+                        <!-- Nome -->
+                        <div class="form-group">
+                            <label><span style="color: red;">*</span> Nome</label>
+                            <input type="name" class="form-control" name="email" required= "required" id="valNome">
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label><span style="color: red;">*</span> Email</label>
+                            <input type="email" class="form-control" name="email" required= "required" id="valEmail">
+                        </div>
+
+                        <!-- Data de Nascimento -->
+                        <div class="form-group">
+  								<label><span style="color: red;">*</span> Data de Nascimento</label>
+  								<input type="date" class="form-control" required="required" id="nascimento" name="valNascimento">
+                        </div>
+
+                        <!-- Sexo -->
+                        <div class="form-group">
+  								<label><span style="color: red;">*</span> Sexo</label>
+  								<select name="sexo" id="valSexo" class="form-control">
+  									<option value="non">Prefiro não dizer</option>
+    								<option value="masculino">Masculino</option>
+    								<option value="feminino">Feminino</option>
+  								</select>
+                        </div>
+
+                        <!-- Estado Civil -->
+                        <div class="form-group">
+  								<label>Estado Civil</label>
+  								<select name="estadoCivil" id="valEstadoCivil" class="form-control">
+  									<option value="non">Prefiro não dizer</option>
+    								<option value="solteiro">Solteiro</option>
+    								<option value="casado">Casado</option>
+    								<option value="divorciado">Divorciado</option>
+    								<option value="viuvo">Viúvo</option>
+  								</select>
+                        </div>
+
+                        <!-- Filhos -->
+                        <div class="form-group">
+  								<label min="0">Filhos</label>
+  								<input type="number" class="form-control" name="filhos" id="valFilhos">
+                        </div>
+
+                        <!-- Altura -->
+                        <div class="form-group">
+  								<label min="0">Altura (cm)</label>
+  								<input type="number" class="form-control" name="altura" id="valAltura">
+                        </div>
+
+                        <!-- Tabagismo -->
+                        <div class="form-group">
+  							<label>Tabagismo</label>
+  							<select name="fumo" id="valFumo" class="form-control">
+  								<option value="0">Nunca Fumou</option>
+    							<option value="1">Ex-Tabagista</option>
+    							<option value="2">Tabagista</option>
+  							</select>
+                        </div>
+
+                        <!-- Etilismo -->
+                        <div class="form-group">
+  							<label>Tabagismo</label>
+  							<select name="beber" id="valBeber" class="form-control">
+  								<option value="0">Nega consumo regular de álcool</option>
+    							<option value="1">Ex-Etilista</option>
+    							<option value="2">Etilista</option>
+  							</select>
+                        </div>
+
+                        <!-- Alergias -->
+                        <div class="form-group">
+                        	<pre><label>Alergias</label>
+                        	<input class="form-group" type="checkbox"><label> Dipirona </label>
+                        	<input class="form-group" type="checkbox">
+                        	<input class="form-group" type="checkbox">
+                        	<input class="form-group" type="checkbox">
+                        	<input class="form-group" type="checkbox">
+                        </div>
+                        
+
+                        <!-- Botao de Salvar -->
+                        <div class="form-group">
+                            <button style="background-color:#A87E3E" class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Salvar</button>
+                        </div>
+                        <!-- FIM Botao de Salvar -->
+
+                        
+
+                    </form>
+                    <!-- FIM Formulario -->
+                </div>
+            <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
