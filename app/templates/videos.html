@@ -18,14 +18,74 @@
 {% endblock %}
 
 {% block conteudo %}
-	<div class="card-container">
-    <img src="static/imagens/place_card.png" alt="">
-    <div style="text-align: left; padding: 10px;"> 
-        <h1>Consultas</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <div class="card-button" id="botaoSubmit" onclick="">
-            <button class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Ver mais</button>
-        </div>
+
+<h1 style="padding: 10px; font-family: Verdana;" > Vídeos </h1>
+
+<div style="margin-left: auto; margin-right: auto; width: 80%">
+    <div style="width: 35%; float: left">
+        <p style= "font-family: Verdana; font-size: 20px"> Nessa sessão, você pode acessar vídeos selecionados pelos nossos profissionais da saúde sobre diversos assuntos. Encontre sessões de meditação, aulas de culinária e videoaulas para realizar exercícios em casa. </p>
+        
+
     </div>
+    <div style="margin-left: 25%">
+       <img style="float: right; width: 500px; height: 250px" src = "static/imagens/medica.jpg">
+    </div>
+
 </div>
+
+
+<div class="cards", style="float: right; ">
+    <table>
+      <tr>
+        <td>
+          <div class="card-container">
+                <div>
+                <img src="static/imagens/place_card.png" class="card-image">
+                </div>
+                <div style="text-align: left; padding: 10px;"> 
+                      <h1>Vídeo 1</h1>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        
+                      <div class="card-button">
+                        <a href="">
+                          <button ahref="" class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Assista o vídeo</button>
+                        </a>
+                      </div>
+                </div>
+          </div>
+        </td>
+            <td style="width: 50px"></td>
+        <td>
+          <div class="card-container">
+              <img src="static/imagens/place_card.png" class="card-image">
+              <div style="text-align: left; padding: 10px;"> 
+                    <h1>Vídeo 2</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenimad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div class="card-button">
+                      <a href="">
+                        <button class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Assista o vídeo</button>
+                        </a>
+                    </div>
+              </div>
+          </div>
+        </td>
+        <td style="width: 50px"></td>
+        <td>
+            <div class="card-container">
+                <img src="static/imagens/place_card.png" class="card-image">
+                <div style="text-align: left; padding: 10px;"> 
+                    <h1>Vídeo</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenimad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div class="card-button">
+                      <a href="">
+                        <button method="get" class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Assista o vídeo</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
 {% endblock %}
