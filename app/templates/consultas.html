@@ -6,7 +6,7 @@
             <li class="active"><a href="/consultas">Consultas</a></li>
             <li><a href="/eventos">Eventos</a></li>
             {% if logado == True %}
-            <li><a href="/user">Perfil</a></li>
+            <li><a href="/entrar">Perfil</a></li>
             {% endif %}
             {% if logado == False %}
             <li><a href="/entrar">Entrar</a></li>
@@ -14,5 +14,21 @@
 {% endblock %}
 
 {% block conteudo %}
-	<h1>to no consultas</h1>
+    <h1>Consultas</h1>
+    <div class="card_container"> 
+        <table>
+            <tr>
+                <!-- <td>
+                    <div style="position: relative;"><img src="static/imagens/medica.jpg" style="width: 10%; height: 10%;"></div> 
+                </td> -->
+                <td>
+                    <div>
+                        <h4><b>Nome:</b>xxxxxx</h3>
+                        <h4><b>Endereço:</b>xxxxxx</h3>
+                        <h4><b>Data:</b>DD-MM-YYYYs</h3>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 {% endblock %}
