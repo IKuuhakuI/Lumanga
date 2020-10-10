@@ -5,6 +5,7 @@
             <li><a href="/">Início</a></li>
             <li><a href="/consultas">Consultas</a></li>
             <li class="active"><a href="/eventos">Eventos</a></li>
+            <li><a href="/videos">Videos</a></li>
             {% if logado == True %}
             <li><a href="/user">Perfil</a></li>
             {% endif %}
@@ -15,6 +16,7 @@
 {% endblock %}
 
 {% block conteudo %}
+<link rel="stylesheet" type="text/css" href="static/styles/calendar_style.css">
 <div class="month">      
   <ul>
     <li class="prev">&#10094;</li>
@@ -70,21 +72,47 @@
   <li>31</li>
 </ul>
 
+<H2 id = "Event" style = "margin-left: 2%;">Evento do dia :(selecione um dia para ver os eventos)</H2>
+<hr >
+<div class="card-eventos-container">
+  <div style="text-align: left; padding: 10px;"> 
+    <h1>Evento</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              
+  <div class="card-button">
+    <button  class="btn btn-primary btn-block btn-lg" style="width: auto" onclick="">Inscreva-se</button>
+  </div>
+  </div>
+</div>
+
 </body>
 
 <script>
-
-    $(".days").children().click(function() {
-        var myNumber = 0
-        if($(this).children().length > 0) {
-            myNumber = $(this).children().text()
+  function array_remove_index_by_value(arr, item)
+  {
+    for (var i = arr.length; i--;)
+    {
+      if (arr[i] === item) {arr.splice(i, 1);}
+    }
+  }
+  var dias_selecionados = []
+  $(".days").children().click(function() {
+      var myNumber = 0
+      if($(this).children().length > 0) {
+          myNumber = $(this).children().text()
             console.log(myNumber)
             $(this).html(myNumber)
+            array_remove_index_by_value(dias_selecionados,myNumber)
+            console.log(dias_selecionados)
+            $("#Event").html("Eventos do dia :"+dias_selecionados.sort().join())
         }
         else {
             myNumber = $(this).text()
             console.log(myNumber)
-            $(this).html("<span class='active'>" + myNumber + "</span>") 
+            $(this).html("<span class='active'>" + myNumber + "</span>")
+            dias_selecionados.push(myNumber)
+            console.log(dias_selecionados)
+            $("#Event").html("Eventos do dia :"+dias_selecionados.sort().join()) 
         }
     })
 
