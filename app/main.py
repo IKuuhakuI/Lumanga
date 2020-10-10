@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-from datetime import timedate
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from datetime import timedelta
 
 app = Flask(__name__)
 app.secret_key = "teste"
@@ -10,7 +10,7 @@ def inicial ():
 	return render_template ("inicio.html")
 
 @app.route("/entrar", methods=["POST", "GET"])
-def login():
+def entrar():
 	if request.method == "POST":
 		session.permanent = True
 		userEmail = request.form ["email"]
@@ -31,7 +31,7 @@ def user ():
 		return f"<h1>{email}</h1>"
 
 	else:
-		return redirect (url_for ("login"))
+		return redirect (url_for ("entrar"))
 
 @app.route("/consultas")
 def consultas():
@@ -44,8 +44,14 @@ def eventos():
 
 @app.route("/sair")
 def logout():
+	if "email" in session:
+		user = session["email"]
+		flash (f"{user}, saiu", "info")
 	session.pop("email", None)
-	return redirect( url_for ("inicial"))
+
+	
+
+	return redirect( url_for ("entrar"))
 
 if __name__ == "__main__":
 	app.run (debug=True)
