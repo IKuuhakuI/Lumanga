@@ -5,7 +5,7 @@ body {font-family: Verdana, sans-serif;}
 .month {
   padding: 70px 25px;
   width: 100%;
-  background: #1abc9c;
+  background: #F4E4CC;
   text-align: center;
 }
 
@@ -15,18 +15,20 @@ body {font-family: Verdana, sans-serif;}
 }
 
 .month ul li {
-  color: white;
+  color: #000;
   font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 3px;
 }
 
 .month .prev {
+  color: #000;
   float: left;
   padding-top: 10px;
 }
 
 .month .next {
+  color: #000;
   float: right;
   padding-top: 10px;
 }

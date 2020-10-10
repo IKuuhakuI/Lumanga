@@ -17,8 +17,13 @@
 {% block conteudo %}
     <link rel="stylesheet" type="text/css" href="static/styles/consultas_style.css">
     <h1 style= "margin-left: 5%"> Consultas</h1>
-
     <hr>
+    {% block content %}
+    {% set Nomes = ["Matheus","Andre","Luiz","Gabriela"]%}
+    {% set Endereco = ["Rua Dona Mariana 213","Rua Voluntarios da Patria 70","Rua Mena Barreto 21","Rua Sorocaba 26"]%}
+    {% set Data = ["12/10/2020","14/11/2021","30/12/2020","20/11/2021"]%}
+    {% set Categoria = ["Cardiologista","Clinico Geral","Oftalmologista","Cardiologista"]%}
+    {% for i in range(4) %}  
     <div class="card-consulta-container"> 
     <table>
         <tr>
@@ -27,64 +32,22 @@
             </td> 
             <td>
             <div>
-                <h4><b>Nome:</b>xxxxxx</h4>
+                <h4><b>Nome: </b>{{Nomes[i]}}</h4>
                 <br>
-                <h4><b>Endereço:</b>xxxxxx</h4>
+                <h4><b>Endereço: </b>{{Endereco[i]}}</h4>
                 
             </div>
             </td>
             <td>
-                <h4><b>Data:</b>DD-MM-YYYYs</h4>
+                <h4><b>Data: </b>{{Data[i]}}</h4>
                 <br>
-                <h4><b>Categoria:</b>xxxxxxxx</h4>
+                <h4><b>Categoria: </b>{{Categoria[i]}}</h4>
             </td>
         </tr>
         </table>
     </div>
-    <div class="card-consulta-container"> 
-    <table>
-        <tr>
-            <td style ="width: 30%">
-                <div style="position: relative;"><img src="static/imagens/medica.jpg" style="width: 80%; height: 10%;"></div> 
-            </td> 
-            <td>
-            <div>
-                <h4><b>Nome:</b>xxxxxx</h4>
-                <br>
-                <h4><b>Endereço:</b>xxxxxx</h4>
-                
-            </div>
-            </td>
-            <td>
-                <h4><b>Data:</b>DD-MM-YYYYs</h4>
-                <br>
-                <h4><b>Categoria:</b>xxxxxxxx</h4>
-            </td>
-        </tr>
-        </table>
-    </div>
-    <div class="card-consulta-container"> 
-    <table>
-        <tr>
-            <td style ="width: 30%">
-                <div style="position: relative;"><img src="static/imagens/medica.jpg" style="width: 80%; height: 10%;"></div> 
-            </td> 
-            <td>
-            <div>
-                <h4><b>Nome:</b>xxxxxx</h4>
-                <br>
-                <h4><b>Endereço:</b>xxxxxx</h4>
-                
-            </div>
-            </td>
-            <td>
-                <h4><b>Data:</b>DD-MM-YYYYs</h4>
-                <br>
-                <h4><b>Categoria:</b>xxxxxxxx</h4>
-            </td>
-        </tr>
-        </table>
-    </div>
+    {% endfor %}
+{% endblock %}
 
 <button  class="btn btn-primary btn-block btn-lg" style="width: auto; margin-left:45%; margin-top: 30px; margin-bottom: 30px" onclick="">Agende uma Consulta</button>
 {% endblock %}s
