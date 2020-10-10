@@ -7,10 +7,12 @@
 	margin-top: 50px;
 }
 .agendar-consulta{
-	width:auto;		
+	width:auto;	
+	align-items: center;
 	position: relative; 
-	border: 2px solid black;
-	margin-left: 30%;
-	margin-right: 30%;
+	justify-content: center;
+	border: 2px solid black; 
+	margin-left: 40%;
+	margin-right: 40%;
 	margin-top: 50px;
 }
