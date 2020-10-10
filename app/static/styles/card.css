@@ -4,11 +4,11 @@
 }
 
 .coluna {
-	width: 5%;
+	width: auto;
 }
 
 .card-container {
-	
+	background-color: #FDE0C3;
 	position: relative; 
 	border: 2px solid black; 
 	width: 80%; 

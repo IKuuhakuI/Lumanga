@@ -1,6 +1,14 @@
-#title { 
-	padding: 10px; 
-	font-family: Verdana;
+.container {
+	position: relative;
+	padding-left:80px;
+}
+
+#img-banner {
+	max-width: 550px;
+	min-width: 200px;
+	float: left;
+	border: 2px solid black;
+	size: relative;
 }
 
 .text-container {
@@ -9,5 +17,13 @@
 }
 
 .text-video {
-	
+	font-size: 20px;
+	width: 35%; 
+	float: left;
+}
+
+.img-container {
+	max-width: 600px;
+	float: left;
+	margin-left: 2%;
 }

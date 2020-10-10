@@ -7,34 +7,33 @@
             <li><a href="/eventos">Eventos</a></li>
             <li class="active"><a href="/videos">Videos</a></li>
             
-
             {% if logado == True %}
             <li><a href="/user">Perfil</a></li>
             {% endif %}
             {% if logado == False %}
             <li><a href="/entrar">Entrar</a></li>
             {% endif %}
-
 {% endblock %}
 
 {% block conteudo %}
+<div class="container">
+  <div id="title">
+    <h1>Vídeos</h1>
+  </div>
 
-<h1 style="padding: 10px; font-family: Verdana;" > Vídeos </h1>
-
-<div style="margin-left: auto; margin-right: auto; width: 80%">
-    <div style="width: 35%; float: left">
-        <p style= "font-family: Verdana; font-size: 20px"> Nessa sessão, você pode acessar vídeos selecionados pelos nossos profissionais da saúde sobre diversos assuntos. Encontre sessões de meditação, aulas de culinária e videoaulas para realizar exercícios em casa. </p>
-        
-
-    </div>
-    <div style="margin-left: 25%">
-       <img style="float: right; width: 500px; height: 250px" src = "static/imagens/medica.jpg">
+  <div>
+    <div id="text-container">
+      <p class ="text-video"> Nessa sessão, você pode acessar vídeos selecionados pelos nossos profissionais da saúde sobre diversos assuntos. Encontre sessões de meditação, aulas de culinária e videoaulas para realizar exercícios em casa. </p>   
     </div>
 
+    <div class="img-container">
+      <img id="img-banner" src = "static/imagens/medica.jpg">
+    </div>
+  </div>
 </div>
 
 
-<div class="cards", style="float: right; ">
+<div class="cards">
     <table>
       <tr>
         <td>
