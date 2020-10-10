@@ -3,20 +3,19 @@ body {
 }
 
 .cards{
-	width: 1000px;
-	margin-left: auto;
-	margin-right: auto;
+    width: 80%;
+    margin: auto;
 }
 
 .coluna {
-	width: 20px;
+	width: 5%;
 }
 
 .card-container {
-	float: left;
+	
 	position: relative; 
 	border: 2px solid black; 
-	width: 300px; 
+	width: 80%; 
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
