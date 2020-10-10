@@ -6,7 +6,10 @@ app.secret_key = "teste"
 app.permanent_session_lifetime = timedelta(minutes=5)
 
 def checarTipoLogin():
-	if (session["logged_in"]):
+	if (session.get("logged_in") == None):
+		return False
+
+	elif (session["logged_in"]):
 		return True
 	return False
 

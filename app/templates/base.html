@@ -8,22 +8,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>{% block title %}{% endblock %}</title>
 </head>
+
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
+          
           <div class="navbar-header">
             <a class="navbar-brand" href="/">Med Match</a>
           </div>
+
           <ul class="nav navbar-nav">
-            {% block menu %}
-            {% endblock %}
-            
-            {% if logado == True %}
+          {% block menu %}
+          {% endblock %}
+
+          {% if logado == True %}
             <li><a href="/sair">Sair</a></li>
-            {% endif %}
-          </ul>
-        </div>
-      </nav>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
 
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -33,7 +36,11 @@
         {% endif %}
     {% endwith %}
 
-{%block conteudo%}{%endblock%}
+  {%block conteudo%}{%endblock%}
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 </body>
 </html>
