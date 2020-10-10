@@ -1,0 +1,16 @@
+.card-consulta-container {
+	
+	position: relative; 
+	border: 2px solid black; 
+	margin-left: 10%;
+	width: 80%; 
+	margin-top: 50px;
+}
+.agendar-consulta{
+	width:auto;		
+	position: relative; 
+	border: 2px solid black;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-top: 50px;
+}
