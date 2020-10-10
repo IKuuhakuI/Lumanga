@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Perfil{% endblock %}
+
+{% block menu %}
+            <li><a href="/">Início</a></li>
+            <li><a href="/consultas">Consultas</a></li>
+            <li><a href="/eventos">Eventos</a></li>
+            <li class="active"><a href="#">Perfil</a></li>
+
+{% endblock %}
+
+{% block content %}
+	<p> Bem Vindo, {{user}} </p>
+{% endblock%}

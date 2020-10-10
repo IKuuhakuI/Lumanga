@@ -15,14 +15,23 @@
             <a class="navbar-brand" href="/">Med Match</a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Início</a></li>
-            <li><a href="/consultas">Consultas</a></li>
-            <li><a href="/eventos">Eventos</a></li>
-            <li><a href="/entrar">Entrar</a></li>
+            {% block menu %}
+            {% endblock %}
+            
+            {% if logado == True %}
             <li><a href="/sair">Sair</a></li>
+            {% endif %}
           </ul>
         </div>
       </nav>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
 {%block conteudo%}{%endblock%}
 

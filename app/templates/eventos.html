@@ -1,7 +1,19 @@
-
 {%extends "base.html"%}
 {%block title%}Eventos{%endblock%}
 
-{%block conteudo%}
-<h1>to no eventos</h1>
-{%endblock%}
+{% block menu %}
+            <li><a href="/">Início</a></li>
+            <li><a href="/consultas">Consultas</a></li>
+            <li class="active"><a href="/eventos">Eventos</a></li>
+            {% if logado == True %}
+            <li><a href="/entrar">Perfil</a></li>
+            {% endif %}
+            {% if logado == False %}
+            <li><a href="/entrar">Entrar</a></li>
+            {% endif %}
+
+{% endblock %}
+
+{% block conteudo %}
+	<h1>to no eventos</h1>
+{% endblock %}

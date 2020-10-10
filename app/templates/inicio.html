@@ -1,6 +1,17 @@
 {%extends "base.html"%}
 {%block title%}Início{%endblock%}
 
+{% block menu %}
+            <li class="active"><a href="/">Início</a></li>
+            <li><a href="/consultas">Consultas</a></li>
+            <li><a href="/eventos">Eventos</a></li>
+            {% if logado == True %}
+            <li><a href="/entrar">Perfil</a></li>
+            {% endif %}
+            {% if logado == False %}
+            <li><a href="/entrar">Entrar</a></li>
+            {% endif %}
+{% endblock %}
 
 {%block conteudo%}
     <h1>to no inicio</h1>
