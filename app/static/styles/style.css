@@ -31,6 +31,7 @@ body {
 	size: 25px;
 }
 
-.card-title {
-
+.card-image {
+		width: 100%;
+		height: auto;
 }
