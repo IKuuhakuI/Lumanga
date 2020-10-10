@@ -95,24 +95,26 @@
       if (arr[i] === item) {arr.splice(i, 1);}
     }
   }
+  function compare(a, b) {
+    if (a === b) 
+         return 0;
+
+    return a < b ? -1 : 1;
+  }
   var dias_selecionados = []
   $(".days").children().click(function() {
       var myNumber = 0
       if($(this).children().length > 0) {
           myNumber = $(this).children().text()
-            console.log(myNumber)
             $(this).html(myNumber)
-            array_remove_index_by_value(dias_selecionados,myNumber)
-            console.log(dias_selecionados)
-            $("#Event").html("Eventos do dia :"+dias_selecionados.sort().join())
+            array_remove_index_by_value(parseInt(dias_selecionados,myNumber))
+            $("#Event").html("Eventos do dia :"+dias_selecionados.sort(compare).join())
         }
         else {
             myNumber = $(this).text()
-            console.log(myNumber)
             $(this).html("<span class='active'>" + myNumber + "</span>")
-            dias_selecionados.push(myNumber)
-            console.log(dias_selecionados)
-            $("#Event").html("Eventos do dia :"+dias_selecionados.sort().join()) 
+            dias_selecionados.push(parseInt(myNumber))
+            $("#Event").html("Eventos do dia :"+dias_selecionados.sort(compare).join()) 
         }
     })
 
