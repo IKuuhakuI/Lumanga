@@ -54,6 +54,10 @@ def consultas():
 def eventos():
 	return render_template ("eventos.html", logado=checarTipoLogin())
 
+@app.route("/videos")
+def videos():
+	return render_template ("videos.html", logado=checarTipoLogin())
+
 
 @app.route("/sair")
 def logout():
