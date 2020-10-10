@@ -1,3 +1,4 @@
+console.log()
 var dias_selecionados = []
 $(".days").children().click(function() {
     console.log("aaaa")
