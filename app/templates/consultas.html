@@ -19,16 +19,17 @@
     <h1 style= "margin-left: 5%"> Consultas</h1>
     <hr>
     {% block content %}
-    {% set Nomes = ["Matheus","Andre","Luiz","Gabriela"]%}
-    {% set Endereco = ["Rua Dona Mariana 213","Rua Voluntarios da Patria 70","Rua Mena Barreto 21","Rua Sorocaba 26"]%}
-    {% set Data = ["12/10/2020","14/11/2021","30/12/2020","20/11/2021"]%}
-    {% set Categoria = ["Cardiologista","Clinico Geral","Oftalmologista","Cardiologista"]%}
-    {% for i in range(4) %}  
+    {% set Nomes = ["Matheus","Luiz","Gabriela"]%}
+    {% set Endereco = ["Rua Dona Mariana 213","Rua Voluntarios da Patria 70","Rua Mena Barreto 21"]%}
+    {% set Data = ["12/10/2020","14/11/2021","30/12/2020"]%}
+    {% set Categoria = ["Cardiologista","Clinico Geral","Oftalmologista"]%}
+    {% set Imagens = ["static/imagens/11.png","static/imagens/12.png","static/imagens/13.png"]%}
+    {% for i in range(3) %}  
     <div class="card-consulta-container"> 
     <table>
         <tr>
             <td style ="width: 30%">
-                <div style="position: relative;"><img src="static/imagens/medica.jpg" style="width: 80%; height: 10%;"></div> 
+                <div style="position: relative;"><img src={{Imagens[i]}} style="width: 80%; height: 10%;"></div> 
             </td> 
             <td>
             <div>
