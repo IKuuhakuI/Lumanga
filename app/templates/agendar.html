@@ -16,34 +16,105 @@
 {% endblock %}
 
 {%block conteudo%}
+<link rel="stylesheet" type="text/css" href="static/styles/agendar_style.css">
+<link rel="stylesheet" type="text/css" href="static/styles/calendar_style.css">
+<script type="text/javascript" src="static/scripts/select_box_script.js"></script>
 <h1 style= "margin-left: 5%">Agendar</h1>
 <hr>
-<div>
-<link rel="stylesheet" type="text/css" href="static/styles/agendar_style.css">
-<select name="Estado" class="selecionar">
-  <option value="invalid">Selecione um Estado</option>
-  <option value="RJ">RJ</option>
-</select>
 
-<select name="Cidade" class="mdb-select md-form"  style="margin-left: 5%;margin-right:5%">
-  <option value="" disabled selected>Selecione uma Cidade</option>
-  <option value="Campos dos Goytacazes">Campos dos Goytacazes</option>
-  <option value="Rio das Ostras">Rio das Ostras</option>
-  <option value="Macaé">Macaé</option>
-  <option value="Rio de Janeiros">Rio de Janeiros</option>
-</select>
-<select name="Categoria" class="selecionar">
-    <option value="invalid">Selecione uma Categoria de Medico </option>
-    <option value="Cardiologista">Cardiologista</option>
-    <option value="Oftalmologista">Oftalmologista</option>
-    <option value="Ortopedista">Ortopedista</option>
-    <option value="Pediatra">Pediatra</option>
-</select>
-</div>
-<script type="text/javascript">
-$(document).ready(function() {
-$('.mdb-select').materialSelect();
-});
-</script>
+<table>
+  <tr>
+    <td>
+
+<label id="img_category_label"class="field"for="img_category"data-value="">
+  <span>Estado</span>
+  <div id="img_category"class="psuedo_select"name="img_category">
+    <span class="selected"></span>
+    <ul id="img_category_options"class="options">
+      <li class="option"data-value="RJ"> RJ</li>
+    </ul>
+  </div>
+</label>
+</td>
+<td>
+
+<label id="img_category_label"class="field"for="img_category"data-value="">
+  <span>Cidade</span>
+  <div id="img_category"class="psuedo_select"name="img_category">
+    <span class="selected"></span>
+    <ul id="img_category_options"class="options">
+      <li class="option"data-value="Rio de Janeiros"> Rio de Janeiros</li>
+    </ul>
+  </div>
+</label>
+
+</td>
+<td>
+<label id="img_category_label"class="field"for="img_category"data-value="">
+  <span>Categorias</span>
+  <div id="img_category"class="psuedo_select"name="img_category">
+    <span class="selected"></span>
+    <ul id="img_category_options"class="options">
+      <li class="option"data-value="Cardiologista"> Cardiologista</li>
+      <li class="option"data-value="Oftalmologista"> Oftalmologista</li>
+      <li class="option"data-value="Pediatra"> Pediatra</li>
+      <li class="option"data-value="Ortopedista"> Ortopedista</li>
+    </ul>
+  </div>
+</label>
+
+</td>
+</tr>
+</table>
+
+<div class="card-agendar-container"> 
+   <table>
+        <tr>
+            <td style ="width: 30%">
+                <div style="position: relative;"><img src="" style="width: 80%; height: 10%;"></div> 
+            </td> 
+            <td>
+            <div>
+                <h4><b>Nome: </b></h4>
+                <br>
+                <h4><b>Endereço: </b></h4>
+                
+            </div>
+            </td>
+            <td style="width: 40%"></td>
+            <td>
+                <h4><b>Data da Consulta: </b></h4>
+                <div class="month">      
+                  <ul>
+                    <li class="prev">&#10094;</li>
+                    <li class="next">&#10095;</li>
+                    <li>
+                      Outubro<br>
+                      <span style="font-size:18px">2020</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <ul class="weekdays">
+                  <li>Segunda</li>
+                  <li>Terça</li>
+                  <li>Quarta</li>
+                  <li>Quinta</li>
+                  <li>Sexta</li>
+                  <li>Sabado</li>
+                  <li>Domingo</li>
+                </ul>
+                <ul class="days">
+     {% block content %}
+        {% for i in range(1,32,1) %}  
+          <li>{{i}}</li>
+        {% endfor %}
+      {% endblock %}
+      </ul>
+            </td>
+             
+        </tr>
+        </table>
+  </div>
 
 {%endblock%}
