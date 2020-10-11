@@ -1,9 +1,29 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from datetime import timedelta
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = "teste"
-app.permanent_session_lifetime = timedelta(minutes=5)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+app.permanent_session_lifetime = timedelta(minutes=30)
+
+db = SQLAlchemy(app)
+
+class Users (db.Model):
+	_id = db.Column (db.Integer, primary_key=True)
+	name = db.Column ("name", db.String (100))
+	email = db.Column ("email", db.String (100), unique=True)
+	password = db.Column ("password", db.String (60))
+
+	def __init__ (self, name, email, password):
+		self.name = name
+		self.email = email
+		self.password = password
+
+db.create_all()
 
 def checarTipoLogin():
 	if (session.get("logged_in") == None):
@@ -15,18 +35,37 @@ def checarTipoLogin():
 
 @app.route ("/")
 def inicial ():
+	if "email" in session:
+		logado = True
+		email = session["email"]
+		session['logged_in'] = True
+
 	return render_template ("inicio.html", logado=checarTipoLogin())
 
 @app.route("/entrar", methods=["POST", "GET"])
 def entrar():
 	if request.method == "POST":
-		session.permanent = True
+
 		userEmail = request.form ["email"]
-		session["email"] = userEmail
+		userPass = request.form ["password"]
 
-		flash ("Entrou", "info")
+		usuario = Users.query.filter_by(email=userEmail).first()
 
-		return redirect (url_for ("user"))
+		if (usuario):
+			if usuario.password == userPass:
+				session.permanent = True
+				session["email"] = userEmail
+
+				return redirect (url_for ("inicial"))
+
+			else:
+				flash ("Senha incorreta", "warning")
+
+		else:
+			flash ("User nao existe", "warning")
+
+		return redirect (url_for ("entrar"))
+		
 
 	else:
 		if "email" in session:
@@ -37,15 +76,7 @@ def entrar():
 @app.route("/user")
 def user ():
 	flash ("Exame 'X' pendente!")
-	if "email" in session:
-		logado = True
-		email = session["email"]
-		session['logged_in'] = True
-
-		return render_template("perfil.html", user=email, logado=checarTipoLogin())
-
-	else:
-		return redirect (url_for ("entrar"))
+	return render_template("perfil.html", logado=checarTipoLogin())
 
 @app.route("/consultas")
 def consultas():
@@ -61,7 +92,7 @@ def videos():
 
 @app.route("/agendar")
 def agendar():
-	return render_template ("agendar.html", logado=checarTipoLogin)
+	return render_template ("agendar.html", logado=checarTipoLogin())
 
 @app.route("/sair")
 def logout():
@@ -74,6 +105,45 @@ def logout():
 
 
 	return redirect( url_for ("inicial"))
+
+@app.route("/registrar", methods=["POST", "GET"])
+def registrar():
+	valNome = ""
+
+	if request.method == "POST":
+		dataName = request.form.get('name', valNome)
+		dataEmail = request.form.get('email', valNome)
+		dataPass = request.form.get('password', valNome)
+		dataConfirm = request.form.get('confirmPassword', valNome)
+		
+		if dataPass == dataConfirm:
+			if Users.query.filter_by(email=dataEmail).first():
+				flash ("email ja cadastrado")
+				return redirect (url_for ("registrar"))
+
+			else:
+				usuario = Users (dataName, dataEmail, dataPass)
+
+				db.session.add(usuario)
+				db.session.commit()
+
+				flash ("User criado")
+
+				return redirect (url_for ("registrar"))
+
+		else:
+			flash ("email nao cadastrado")
+			return redirect (url_for ("registrar"))
+			flash ("True")
+
+		return redirect (url_for ("user"))
+
+
+	return render_template ("registrar.html", logado=checarTipoLogin())
+
+@app.route ("/view")
+def view ():
+	return render_template ("view.html", values=Users.query.all())
 
 if __name__ == "__main__":
 	app.run (debug=True)
