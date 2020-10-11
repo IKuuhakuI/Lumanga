@@ -2,16 +2,22 @@
 {%block title%}Vídeos{%endblock%}
 
 {% block menu %}
-            <li><a href="/">Início</a></li>
+            <li ><a href="/">Início</a></li>
+            {% if logado == True %}
             <li><a href="/consultas">Consultas</a></li>
+              {% endif %}
+            {% if logado == True %}
             <li><a href="/eventos">Eventos</a></li>
+             {% endif %}
+            {% if logado == True %}
             <li class="active"><a href="/videos">Videos</a></li>
-            
+            {% endif %}
             {% if logado == True %}
             <li><a href="/user">Perfil</a></li>
             {% endif %}
             {% if logado == False %}
             <li><a href="/entrar">Entrar</a></li>
+            <li><a href="/registrar">Registrar</a></li>
             {% endif %}
 {% endblock %}
 

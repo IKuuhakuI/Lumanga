@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 {% block title %}Entrar{% endblock %}
-
 {% block menu %}
-            <li><a href="/">Início</a></li>
+            <li ><a href="/">Início</a></li>
+            {% if logado == True %}
             <li><a href="/consultas">Consultas</a></li>
+              {% endif %}
+            {% if logado == True %}
             <li><a href="/eventos">Eventos</a></li>
+             {% endif %}
+            {% if logado == True %}
             <li><a href="/videos">Videos</a></li>
+            {% endif %}
             {% if logado == True %}
             <li><a href="/user">Perfil</a></li>
             {% endif %}
             {% if logado == False %}
             <li class="active"><a href="/entrar">Entrar</a></li>
+            <li><a href="/registrar">Registrar</a></li>
             {% endif %}
 {% endblock %}
 
@@ -31,7 +37,7 @@
                             <label>Senha</label>
                             <input type="password" class="form-control" name="password" required="required" id="txtSenha">
                         </div>
-                            <div class="form-group">
+                        <div class="form-group">
                             <button style="background-color:#A87E3E" class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Entrar</button>
                         </div>
                     </form>

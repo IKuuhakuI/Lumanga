@@ -2,17 +2,23 @@
 {%block title%}Eventos{%endblock%}
 
 {% block menu %}
-            <li><a href="/">Início</a></li>
+            <li ><a href="/">Início</a></li>
+            {% if logado == True %}
             <li><a href="/consultas">Consultas</a></li>
+              {% endif %}
+            {% if logado == True %}
             <li class="active"><a href="/eventos">Eventos</a></li>
+             {% endif %}
+            {% if logado == True %}
             <li><a href="/videos">Videos</a></li>
+            {% endif %}
             {% if logado == True %}
             <li><a href="/user">Perfil</a></li>
             {% endif %}
             {% if logado == False %}
             <li><a href="/entrar">Entrar</a></li>
+            <li><a href="/registrar">Registrar</a></li>
             {% endif %}
-
 {% endblock %}
 
 {% block conteudo %}
@@ -49,15 +55,15 @@
   {% endblock %}
 </ul>
 
-<H2 id = "Event" style = "margin-left: 2%;">Evento do dia :(selecione um dia para ver os eventos)</H2>
+<H2 id = "Event" style = "margin-left: 2%;">Evento do dia: (selecione um dia para ver os eventos)</H2>
 <hr >
 <div class="card-eventos-container">
   <div style="text-align: left; padding: 10px;"> 
     <h1>Sessão de Alongamento</h1>
-    <p>Junte-se a nos nessa sessão de alongamento para comecar a manha preparado.
+    <p>Junte-se a nós nessa sessão de alongamento para comecar a manhã com disposição.
     A aula será ministrada pelo professor Leonardo Nigri, professor da academia "Ser Fit"</p>
   <div style=" max-width: 300px;">
-    <p><b>Horario:</b> 7:00</p></div>
+    <p><b>Horario:</b> 7:00h</p></div>
     <button class="btn btn-primary btn-block btn-lg" style=" width: auto; margin-left: 80%; background-color:#A87E3E" onclick="">Inscreva-se</button>
   </div>
 

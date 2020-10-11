@@ -3,14 +3,21 @@
 
 {% block menu %}
             <li class="active"><a href="/">Início</a></li>
+            {% if logado == True %}
             <li><a href="/consultas">Consultas</a></li>
+              {% endif %}
+            {% if logado == True %}
             <li><a href="/eventos">Eventos</a></li>
+             {% endif %}
+            {% if logado == True %}
             <li><a href="/videos">Videos</a></li>
+            {% endif %}
             {% if logado == True %}
             <li><a href="/user">Perfil</a></li>
             {% endif %}
             {% if logado == False %}
             <li><a href="/entrar">Entrar</a></li>
+            <li><a href="/registrar">Registrar</a></li>
             {% endif %}
 {% endblock %}
 
@@ -28,12 +35,12 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active" style="margin-left: auto;margin-right: auto;">
-      <img src="static/imagens/xx.png" alt="..." class="card-image">
+      <img src="static/imagens/yy.png" alt="..." class="card-image">
       <div class="carousel-caption">
       </div>
     </div>
     <div class="item">
-      <img src="static/imagens/yy.png" alt="..." class="card-image">
+      <img src="static/imagens/xx.png" alt="..." class="card-image">
       <div class="carousel-caption">
       </div>
     </div>
@@ -68,14 +75,33 @@
                       <p>Nessa área, você pode agendar consultas com os profissionais da saúde, como médicos, psicológos e dentistas e visualizar os horários disponíveis de atendimento. Lembre-se sempre de marcar as suas consultas periódicas. </p>
                         
                       <div class="card-button">
+                        {% if logado == True %}
+
                         <a href="/consultas">
+
                           <button style="background-color: #A87E3E" ahref="/consultas" class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Ver mais</button>
+
+                          
+
                         </a>
+                         {% endif %}
+
+                          {% if logado == False %}
+
+                        <a href="/entrar">
+
+                          <button style="background-color: #A87E3E" ahref="/consultas" class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Ver mais</button>
+
+                          
+
+                        </a>
+                         {% endif %}
                       </div>
                 </div>
           </div>
         </td>
-            <td style="width: 50px"></td>
+  
+                  <td style="width: 50px"></td>
         <td>
           <div class="card-container">
               <img src="static/imagens/3.png" class="card-image">
@@ -83,24 +109,45 @@
                     <h1>Eventos</h1>
                     <p>Aqui você pode acessar os nossos eventos ao vivo conduzidos por profissionais de Instituições Parceiras da Petrobras, como aulas de alongamento, de meditação e de cozinha. Participe dos eventos e conheça funcionários por todo o Brasil!</p>
                     <div class="card-button">
+                      {% if logado == True %}
                       <a href="/eventos">
                         <button style="background-color: #A87E3E" class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Ver mais</button>
+
+                        {% endif %}
+
+                           {% if logado == False %}
+                      <a href="/entrar">
+                        <button style="background-color: #A87E3E" class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Ver mais</button>
+
+                        {% endif %}
+
+
+
                         </a>
                     </div>
               </div>
           </div>
         </td>
+
+
         <td style="width: 50px"></td>
         <td>
             <div class="card-container">
                 <img src="static/imagens/4.png" class="card-image">
                 <div style="text-align: left; padding: 10px;"> 
                     <h1>Vídeos</h1>
-                    <p>Assista os vídeos indicados pela nossa equipe de profissionais de saúde. Yoga, meditação, música, respiração, exercícios físicos, culinária, e muito mais.  </p>
+                    <p>Assista os vídeos indicados pela nossa equipe de profissionais de saúde. Yoga, meditação, música, respiração, exercícios físicos, culinária, e muito mais, com a curadoria dos vídeos intregando equipe de saúde e fucionários.</p>
                     <div class="card-button">
+                       {% if logado == True %}
                       <a href="/videos">
                         <button style="background-color: #A87E3E"  class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Ver mais</button>
-                      </a>
+                      </a> {% endif %}
+
+                            {% if logado == False %}
+                      <a href="/entrar">
+                        <button style="background-color: #A87E3E"  class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Ver mais</button>
+                      </a> {% endif %}
+
                     </div>
                 </div>
             </div>

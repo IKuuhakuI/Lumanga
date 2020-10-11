@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Registrar{% endblock %}
+
+{% block menu %}    
+            <li><a href="/">Início</a></li>
+            {% if logado == True %}
+            <li><a href="/consultas">Consultas</a></li>
+              {% endif %}
+            {% if logado == True %}
+            <li><a href="/eventos">Eventos</a></li>
+             {% endif %}
+            {% if logado == True %}
+            <li><a href="/videos">Videos</a></li>
+            {% endif %}
+            {% if logado == True %}
+            <li><a href="/user">Perfil</a></li>
+            {% endif %}
+            {% if logado == False %}
+            <li><a href="/entrar">Entrar</a></li>
+            <li class="active"><a href="/registrar">Registrar</a></li>
+            {% endif %}
+{% endblock %}
+
+{% block conteudo %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="signup-form" id="caixaLogin">     
+                    <form action="#" method="post">
+                        <h2 id="title">Registrar</h2>
+                        <hr>
+                        
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" name="name" required= "required" id="txtNome">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" required= "required" id="txtEmail">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Senha</label>
+                            <input type="password" class="form-control" name="password" required="required" id="txtSenha">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Confirma Senha</label>
+                            <input type="password" class="form-control" name="confirmPassword" required="required" id="txtConfirmaSenha">
+                        </div>
+                        
+                        <div class="form-group">
+                            <button style="background-color:#A87E3E" class="btn btn-primary btn-block btn-lg" id="botaoSubmit" onclick="">Criar conta</button>
+                        </div>
+                        <p>Já possui uma conta? Clique <a href="/entrar">aqui</a> para entrar </p>
+                    </form>
+
+                </div>
+            <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
