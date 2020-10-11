@@ -35,18 +35,37 @@ def checarTipoLogin():
 
 @app.route ("/")
 def inicial ():
+	if "email" in session:
+		logado = True
+		email = session["email"]
+		session['logged_in'] = True
+
 	return render_template ("inicio.html", logado=checarTipoLogin())
 
 @app.route("/entrar", methods=["POST", "GET"])
 def entrar():
 	if request.method == "POST":
-		session.permanent = True
+
 		userEmail = request.form ["email"]
-		session["email"] = userEmail
+		userPass = request.form ["password"]
 
-		flash ("Entrou", "info")
+		usuario = Users.query.filter_by(email=userEmail).first()
 
-		return redirect (url_for ("user"))
+		if (usuario):
+			if usuario.password == userPass:
+				session.permanent = True
+				session["email"] = userEmail
+
+				return redirect (url_for ("inicial"))
+
+			else:
+				flash ("Senha incorreta", "warning")
+
+		else:
+			flash ("User nao existe", "warning")
+
+		return redirect (url_for ("entrar"))
+		
 
 	else:
 		if "email" in session:
@@ -56,17 +75,8 @@ def entrar():
 
 @app.route("/user")
 def user ():
-
 	flash ("Exame 'X' pendente!")
-	if "email" in session:
-		logado = True
-		email = session["email"]
-		session['logged_in'] = True
-
-		return render_template("perfil.html", user=email, logado=checarTipoLogin())
-
-	else:
-		return redirect (url_for ("entrar"))
+	return render_template("perfil.html", logado=checarTipoLogin())
 
 @app.route("/consultas")
 def consultas():
@@ -130,9 +140,10 @@ def registrar():
 
 
 	return render_template ("registrar.html", logado=checarTipoLogin())
-	'''
-	user = User (name=..., email=..., password=...)
-	return render_template ("registrar.html", logado=checarTipoLogin())
-	'''
+
+@app.route ("/view")
+def view ():
+	return render_template ("view.html", values=Users.query.all())
+
 if __name__ == "__main__":
 	app.run (debug=True)
