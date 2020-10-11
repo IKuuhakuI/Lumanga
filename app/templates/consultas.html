@@ -7,20 +7,21 @@
             <li><a href="/eventos">Eventos</a></li>
             <li><a href="/videos">Videos</a></li>
             {% if logado == True %}
-            <li><a href="/entrar">Perfil</a></li>
+                <li><a href="/entrar">Perfil</a></li>
             {% endif %}
             {% if logado == False %}
-            <li><a href="/entrar">Entrar</a></li>
+                <li><a href="/entrar">Entrar</a></li>
             {% endif %}
 {% endblock %}
 
 {% block conteudo %}
-
+<h1 style= "margin-left: 5%"> Consultas</h1>
+    <hr>
 <a href="/agendar"><button  class="btn btn-primary btn-block btn-lg" style="width: auto; margin-left:45%; margin-top: 30px; margin-bottom: 30px ;background-color:#A87E3E" onclick="">Agende uma Consulta</button></a>
 
     <link rel="stylesheet" type="text/css" href="static/styles/consultas_style.css">
-    <h1 style= "margin-left: 5%"> Consultas</h1>
-    <hr>
+    
+    <h2 style= "margin-left: 5%">Consultas Marcadas</h2>
     {% block content %}
     {% set Nomes = ["Lara Afonso","Miria Bauer","Luiz Gonzaga"]%}
     {% set Estado = ["RJ","RS","TO"]%}
