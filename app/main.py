@@ -75,7 +75,7 @@ def entrar():
 
 @app.route("/user")
 def user ():
-	flash ("Exame 'X' pendente!")
+	flash ("Consulta 'X' pendente!")
 	return render_template("perfil.html", logado=checarTipoLogin())
 
 @app.route("/consultas")

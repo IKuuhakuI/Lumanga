@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block title %} View All Users {% endblock %}
 
-{% block content %}
+<!-- OBJETIVO PARA DEBUG APENAS -->
+
+{% block conteudo %}
 	{% for item in values %}
-		<p>Email: {{item.name}} </p>
+		<p style="margin-left: 20px;">Id: {{item._id}}  |  Email: {{item.email}}  |  Password: {{item.password}} </p>
 	{% endfor %}
 {% endblock %}
