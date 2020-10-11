@@ -1,9 +1,28 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from datetime import timedelta
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = "teste"
-app.permanent_session_lifetime = timedelta(minutes=5)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+app.permanent_session_lifetime = timedelta(minutes=30)
+
+db = SQLAlchemy(app)
+
+class Users (db.Model):
+	_id = db.Column ("id", db.Integer, primary_key=True)
+	name = db.Column ("name", db.String (100))
+	email = db.Column ("email", db.String (100), primary_key=True)
+	password = db.Column ("password", db.String (60))
+
+	def __init__ (self, name, email, password):
+		self.name = name
+		self.email = email
+		self.password = password
+		
 
 def checarTipoLogin():
 	if (session.get("logged_in") == None):
@@ -36,6 +55,7 @@ def entrar():
 
 @app.route("/user")
 def user ():
+
 	flash ("Exame 'X' pendente!")
 	if "email" in session:
 		logado = True
@@ -61,7 +81,7 @@ def videos():
 
 @app.route("/agendar")
 def agendar():
-	return render_template ("agendar.html", logado=checarTipoLogin)
+	return render_template ("agendar.html", logado=checarTipoLogin())
 
 @app.route("/sair")
 def logout():
@@ -75,5 +95,36 @@ def logout():
 
 	return redirect( url_for ("inicial"))
 
+@app.route("/registrar", methods=["POST", "GET"])
+def registrar():
+	valNome = ""
+
+	if request.method == "POST":
+		# session.permanent = True
+		# userEmail = request.form ["email"]
+		# session["email"] = userEmail
+
+		dataName = request.form.get('name', valNome)
+		dataEmail = request.form.get('email', valNome)
+		dataPass = request.form.get('password', valNome)
+		dataConfirm = request.form.get('confirmPassword', valNome)
+
+		if dataPass == dataConfirm:
+			flash ("True")
+
+			session.permanent = True
+		else:
+			flash ("False")
+
+		return redirect (url_for ("user"))
+
+
+	
+
+	return render_template ("registrar.html", logado=checarTipoLogin())
+	'''
+	user = User (name=..., email=..., password=...)
+	return render_template ("registrar.html", logado=checarTipoLogin())
+	'''
 if __name__ == "__main__":
 	app.run (debug=True)
