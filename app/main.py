@@ -59,6 +59,9 @@ def eventos():
 def videos():
 	return render_template ("videos.html", logado=checarTipoLogin())
 
+@app.route("/agendar")
+def agendar():
+	return render_template ("agendar.html", logado=checarTipoLogin)
 
 @app.route("/sair")
 def logout():
