@@ -24,7 +24,10 @@ Prototipagem no Balsamic
 
 Comandos necessários para rodar o ambiente local:
 
+Flask:
 >pip install flask
+
+SQLAlchemy:
 >pip install -U Flask-SQLAlchemy
 
 (o pip deve estar indicado para a versão do python, podendo ser substituido por pip3 em caso de conflitos com python 2)
