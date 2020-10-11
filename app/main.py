@@ -13,16 +13,17 @@ app.permanent_session_lifetime = timedelta(minutes=30)
 db = SQLAlchemy(app)
 
 class Users (db.Model):
-	_id = db.Column ("id", db.Integer, primary_key=True)
+	_id = db.Column (db.Integer, primary_key=True)
 	name = db.Column ("name", db.String (100))
-	email = db.Column ("email", db.String (100), primary_key=True)
+	email = db.Column ("email", db.String (100), unique=True)
 	password = db.Column ("password", db.String (60))
 
 	def __init__ (self, name, email, password):
 		self.name = name
 		self.email = email
 		self.password = password
-		
+
+db.create_all()
 
 def checarTipoLogin():
 	if (session.get("logged_in") == None):
@@ -100,26 +101,33 @@ def registrar():
 	valNome = ""
 
 	if request.method == "POST":
-		# session.permanent = True
-		# userEmail = request.form ["email"]
-		# session["email"] = userEmail
-
 		dataName = request.form.get('name', valNome)
 		dataEmail = request.form.get('email', valNome)
 		dataPass = request.form.get('password', valNome)
 		dataConfirm = request.form.get('confirmPassword', valNome)
-
+		
 		if dataPass == dataConfirm:
-			flash ("True")
+			if Users.query.filter_by(email=dataEmail).first():
+				flash ("email ja cadastrado")
+				return redirect (url_for ("registrar"))
 
-			session.permanent = True
+			else:
+				usuario = Users (dataName, dataEmail, dataPass)
+
+				db.session.add(usuario)
+				db.session.commit()
+
+				flash ("User criado")
+
+				return redirect (url_for ("registrar"))
+
 		else:
-			flash ("False")
+			flash ("email nao cadastrado")
+			return redirect (url_for ("registrar"))
+			flash ("True")
 
 		return redirect (url_for ("user"))
 
-
-	
 
 	return render_template ("registrar.html", logado=checarTipoLogin())
 	'''
