@@ -71,17 +71,17 @@
    <table>
         <tr>
             <td style ="width: 30%">
-                <div style="position: relative;"><img src="" style="width: 80%; height: 10%;"></div> 
+                <div style="position: relative;"><img src="static/imagens/11.png" style="width: 80%; height: 10%;"></div> 
             </td> 
             <td>
             <div>
-                <h4><b>Nome: </b></h4>
+                <h4><b>Nome: </b>Lara Afonso</h4>
                 <br>
-                <h4><b>Endereço: </b></h4>
+                <h4><b>Endereço: </b>Botafogo, Rua Dona Mariana, 213</h4>
                 
             </div>
             </td>
-            <td style="width: 40%"></td>
+            <td style="width: 20%"></td>
             <td>
                 <h4><b>Data da Consulta: </b></h4>
                 <div class="month">      
@@ -116,5 +116,32 @@
         </tr>
         </table>
   </div>
+
+  <script>
+  function array_remove_index_by_value(arr, item)
+  {
+    for (var i = arr.length; i--;)
+    {
+      if (arr[i] === item) {arr.splice(i, 1);}
+    }
+  }
+  function compare(a, b) {
+    if (a === b) 
+         return 0;
+    return a < b ? -1 : 1;
+  }
+  $(".days").children().click(function() {
+      var myNumber = 0
+      if($(this).children().length > 0) {
+          myNumber = $(this).children().text()
+          $(this).html(myNumber)
+        }
+        else {
+            myNumber = $(this).text()
+            $(this).html("<span class='active'>" + myNumber + "</span>")
+        }
+    })
+
+</script>
 
 {%endblock%}
