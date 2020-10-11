@@ -22,10 +22,11 @@
     {% set Nomes = ["Lara Afonso","Miria Bauer","Luiz Gonzaga"]%}
     {% set Estado = ["RJ","RS","TO"]%}
     {% set  Cidade = ["Rio de Janeiro","Porto Alegre","Palmas"]%}
-    {% set Endereco = ["Botafogo, Rua Dona Mariana, 213","Botafogo,Rua Voluntarios da Patria,70","Botafogo,Rua Mena Barreto, 21"]%}
+    {% set Endereco = ["Rua Dona Mariana, 213","Rua Voluntarios da Patria,70","Rua Mena Barreto, 21"]%}
     {% set Data  = ["12/10/2020","14/11/2021","30/12/2020"]%}
     {% set Categoria = ["Cardiologista","Clinico Geral","Oftalmologista"]%}
     {% set Imagens = ["static/imagens/11.png","static/imagens/12.png","static/imagens/13.png"]%}
+    {% set Bairro = ["Botafogo", "Botafogo", "Botafogo"]%}
     {% for i in range(3) %}  
     <div class="card-consulta-container"> 
     <table>
@@ -38,18 +39,23 @@
                 <h4><b>Nome: </b>{{Nomes[i]}}</h4>
                 <br>
                 <h4><b>Endereço: </b>{{Endereco[i]}}</h4>
-                
+                <br>
+                <h4><b>Email: </b>exemplo@dominio.com</h4> 
             </div>
             <td>
                 <h4><b>Estado: </b>{{Estado[i]}}</h4>
                 <br>
                 <h4><b>Cidade: </b>{{Cidade[i]}}</h4>
+                <br>
+                <h4><b>Telefone: </b>99 99999-9999</h4> 
             </td>
             </td>
             <td>
                 <h4><b>Data da Consulta: </b>{{Data[i]}}</h4>
                 <br>
                 <h4><b>Categoria: </b>{{Categoria[i]}}</h4>
+                <br>
+                <h4><b>Bairro: </b>{{Bairro[i]}}</h4> 
             </td>
              
         </tr>
